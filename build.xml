@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="biblioobserve" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+   <property name="main-class" value="biblioobserve.Application" />
+    
+  <!-- Compiler options --> 
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.commons-configuration:commons-configuration:1.7.classpath">
+    <pathelement location="${basedir}/lib/commons-beanutils-1.8.3.jar"/>
+    <pathelement location="${basedir}/lib/commons-collections-3.2.1.jar"/>
+    <pathelement location="${basedir}/lib/commons-configuration-1.7.jar"/>
+    <pathelement location="${basedir}/lib/commons-digester-1.8.1.jar"/>
+    <pathelement location="${basedir}/lib/commons-lang-2.6.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging-1.1.1.jar"/>
+    <pathelement location="${basedir}/lib/servlet-api-2.4.jar"/>
+    <pathelement location="${basedir}/lib/xml-apis-1.0.b2.jar"/>
+  </path>
+  
+  <path id="library.junit:junit-dep:4.10.classpath">
+    <pathelement location="${basedir}/lib/hamcrest-core-1.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-dep-4.10.jar"/>
+  </path>
+  
+  <path id="library.junit:junit:4.10.classpath">
+    <pathelement location="${basedir}/lib/hamcrest-core-1.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.10.jar"/>
+  </path>
+  
+  <path id="library.log4j:log4j:1.2.16.classpath">
+    <pathelement location="${basedir}/lib/log4j-1.2.16.jar"/>
+  </path>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module BiblioObserve -->
+  
+  <dirname property="module.biblioobserve.basedir" file="${ant.file}"/>
+  
+  
+  
+  <property name="compiler.args.biblioobserve" value="${compiler.args}"/>
+  
+  <property name="biblioobserve.output.dir" value="${module.biblioobserve.basedir}/out/production/BiblioObserve"/>
+  <property name="biblioobserve.testoutput.dir" value="${module.biblioobserve.basedir}/out/test/BiblioObserve"/>
+  <property name="jar.dir" value="${module.biblioobserve.basedir}/out/jar" />
+  
+  <path id="biblioobserve.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="biblioobserve.module.production.classpath">
+    <path refid="library.log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.junit:junit:4.10.classpath"/>
+    <path refid="library.junit:junit-dep:4.10.classpath"/>
+    <path refid="library.commons-configuration:commons-configuration:1.7.classpath"/>
+  </path>
+  
+  <path id="biblioobserve.runtime.production.module.classpath">
+    <pathelement location="${biblioobserve.output.dir}"/>
+    <path refid="library.log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.junit:junit:4.10.classpath"/>
+    <path refid="library.junit:junit-dep:4.10.classpath"/>
+    <path refid="library.commons-configuration:commons-configuration:1.7.classpath"/>
+  </path>
+  
+  <path id="biblioobserve.module.classpath">
+    <pathelement location="${biblioobserve.output.dir}"/>
+    <path refid="library.log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.junit:junit:4.10.classpath"/>
+    <path refid="library.junit:junit-dep:4.10.classpath"/>
+    <path refid="library.commons-configuration:commons-configuration:1.7.classpath"/>
+  </path>
+  
+  <path id="biblioobserve.runtime.module.classpath">
+    <pathelement location="${biblioobserve.testoutput.dir}"/>
+    <pathelement location="${biblioobserve.output.dir}"/>
+    <path refid="library.log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.junit:junit:4.10.classpath"/>
+    <path refid="library.junit:junit-dep:4.10.classpath"/>
+    <path refid="library.commons-configuration:commons-configuration:1.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.biblioobserve">
+    <patternset refid="ignored.files"/>
+    <exclude name="out/**"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.biblioobserve">
+    <patternset refid="excluded.from.module.biblioobserve"/>
+  </patternset>
+  
+  <path id="biblioobserve.module.sourcepath">
+    <dirset dir="${module.biblioobserve.basedir}/../">
+      <include name="BiblioObserve/src"/>
+    </dirset>
+  </path>
+  
+  <path id="biblioobserve.module.test.sourcepath">
+    <dirset dir="${module.biblioobserve.basedir}/../">
+      <include name="BiblioObserve"/>
+      <include name="BiblioObserve/test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile" depends="production,tests" description="Compile module BiblioObserve"/>
+  
+  <target name="production" description="Compile module BiblioObserve; production classes">
+    <mkdir dir="${biblioobserve.output.dir}"/>
+    <javac destdir="${biblioobserve.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.biblioobserve}"/>
+      <bootclasspath refid="biblioobserve.module.bootclasspath"/>
+      <classpath refid="biblioobserve.module.production.classpath"/>
+      <src refid="biblioobserve.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.biblioobserve"/>
+    </javac>
+    
+    <copy todir="${biblioobserve.output.dir}">
+      <fileset dir="${module.biblioobserve.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="tests" depends="production" description="compile module BiblioObserve; test classes" unless="skip.tests">
+    <mkdir dir="${biblioobserve.testoutput.dir}"/>
+    <javac destdir="${biblioobserve.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.biblioobserve}"/>
+      <bootclasspath refid="biblioobserve.module.bootclasspath"/>
+      <classpath refid="biblioobserve.module.classpath"/>
+      <src refid="biblioobserve.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.biblioobserve"/>
+    </javac>
+    
+    <copy todir="${biblioobserve.testoutput.dir}">
+      <fileset dir="${module.biblioobserve.basedir}">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.biblioobserve.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean" description="cleanup module">
+    <delete dir="${biblioobserve.output.dir}"/>
+    <delete dir="${biblioobserve.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+
+    <target name="jar" depends="init,clean,compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar"
+             basedir="${biblioobserve.output.dir}">
+                <manifest>
+                    <attribute name="Main-Class" value="${main-class}" />
+                </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="biblioobserve.module.production.classpath"/>
+                <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+      <!--
+    <target name="junit" depends="jar">
+        <junit printsummary="yes">
+            <classpath refid="biblioobserve.module.classpath" />
+            <batchtest fork="yes">
+                <fileset dir="${module.biblioobserve.basedir}/test" />
+            </batchtest>
+        </junit>
+    </target>
+        -->
+  <target name="all" depends="init, clean, compile" description="build all modules"/>
+
+</project>

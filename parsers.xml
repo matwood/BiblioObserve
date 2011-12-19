@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<config>
+    <parsers>
+        <strategy>
+            <name>XML Parser</name>
+            <type>XML</type>
+            <classpath>biblioobserve.parsers.ParserStrategyXML</classpath>
+        </strategy>
+        <strategy>
+            <name>JSON Parser</name>
+            <type>JSON</type>
+            <classpath>biblioobserve.parsers.ParserStrategyJSON</classpath>
+        </strategy>
+        <strategy>
+            <name>CSV Parser</name>
+            <type>CSV</type>
+            <classpath>biblioobserve.parsers.ParserStrategyCSV</classpath>
+        </strategy>
+    </parsers>
+</config>
