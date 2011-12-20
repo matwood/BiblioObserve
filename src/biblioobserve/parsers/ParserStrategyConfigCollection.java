@@ -15,18 +15,18 @@ import java.util.List;
  * Manages the loading and access of the parser.xml config.  Should call {@link #configure()}
  * before first use.
  */
-public class ParserStrategyConfigCollection {
-    static Logger logger = Logger.getLogger(ParserStrategyConfigCollection.class);
-    private static ParserStrategyConfigCollection ourInstance = new ParserStrategyConfigCollection();
+public enum ParserStrategyConfigCollection {
+    INSTANCE;
+    private final static Logger logger = Logger.getLogger(ParserStrategyConfigCollection.class);
 
-    HashMap<String,String> loadedParsers = new HashMap<String,String>();
+    private final HashMap<String,String> loadedParsers = new HashMap<String,String>();
 
     /**
      * Singleton access.
      * @return {@link ParserStrategyConfigCollection}
      */
     public static ParserStrategyConfigCollection getInstance() {
-        return ourInstance;
+        return INSTANCE;
     }
 
     private ParserStrategyConfigCollection() {}
