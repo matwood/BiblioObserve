@@ -1,11 +1,11 @@
 package biblioobserve;
 
+import biblioobserve.parsers.ParserStrategyConfigCollection;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
-
-import biblioobserve.parsers.ParserStrategyConfigCollection;
-import org.apache.log4j.Logger;
 
 /**
  * @author matwood
@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  * notifies the observers it sends along information required to process the file.
  */
 public class ObservableDirectory extends Observable{
-    static Logger logger = Logger.getLogger(ObservableDirectory.class);
+    private final static Logger logger = Logger.getLogger(ObservableDirectory.class);
 
     public void run() {
         logger.debug("Pretend a file shows up...");
@@ -24,7 +24,7 @@ public class ObservableDirectory extends Observable{
         ofile.setName("path/name/type");
 
         //grab set of parser types to pull one from random
-        ArrayList<String> parserTypes = ParserStrategyConfigCollection.getInstance().getTypes();
+        ArrayList<String> parserTypes = ParserStrategyConfigCollection.INSTANCE.getTypes();
 
         Random r = new Random();
         int numParsers = parserTypes.size();

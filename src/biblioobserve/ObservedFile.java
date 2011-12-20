@@ -9,7 +9,8 @@ package biblioobserve;
  *
  */
 public class ObservedFile {
-    public String type;
+    private String name;
+    private String type;
 
     public String getType() {
         return type;
@@ -26,6 +27,4 @@ public class ObservedFile {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String name;
 }

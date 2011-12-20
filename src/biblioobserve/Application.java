@@ -35,7 +35,7 @@ public class Application {
         BasicConfigurator.configure();
 
         //setup parser collection
-        ParserStrategyConfigCollection.getInstance().configure();
+        ParserStrategyConfigCollection.INSTANCE.configure();
 
         //create the app objects
         final ObservableDirectory obd = new ObservableDirectory();

@@ -6,7 +6,7 @@ package biblioobserve.parsers;
  * Executes a strategy on a parameter.
  */
 public class Parser {
-    private ParserStrategy strategy;
+    private final ParserStrategy strategy;
     
     public Parser(ParserStrategy parserStrategy) {
         strategy = parserStrategy;    

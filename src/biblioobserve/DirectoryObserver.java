@@ -1,9 +1,12 @@
 package biblioobserve;
 
+import biblioobserve.parsers.Parser;
+import biblioobserve.parsers.ParserStrategy;
+import biblioobserve.parsers.ParserStrategyFactory;
 import org.apache.log4j.Logger;
+
 import java.util.Observable;
 import java.util.Observer;
-import biblioobserve.parsers.*;
 
 /**
  * @author matwood
@@ -11,7 +14,7 @@ import biblioobserve.parsers.*;
  * Simple observer class to monitor an {@link ObservableDirectory} for new files.
  */
 public class DirectoryObserver implements Observer{
-    static Logger logger = Logger.getLogger(ObservableDirectory.class);
+    private final static Logger logger = Logger.getLogger(ObservableDirectory.class);
 
     @Override
     public void update(Observable o, Object arg) {

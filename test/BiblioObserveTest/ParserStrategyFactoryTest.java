@@ -11,7 +11,7 @@ import biblioobserve.parsers.*;
 public class ParserStrategyFactoryTest {
     public ParserStrategyFactoryTest(){
         BasicConfigurator.configure();
-        ParserStrategyConfigCollection.getInstance().configure();
+        ParserStrategyConfigCollection.INSTANCE.configure();
     }
 
     @Test

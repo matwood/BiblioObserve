@@ -16,20 +16,11 @@ import java.util.List;
  * before first use.
  */
 public enum ParserStrategyConfigCollection {
-    INSTANCE;
+    INSTANCE; //preferred singleton method in java 5 see http://stackoverflow.com/questions/70689/efficient-way-to-implement-singleton-pattern-in-java
     private final static Logger logger = Logger.getLogger(ParserStrategyConfigCollection.class);
 
+    //holds types and parser classpaths
     private final HashMap<String,String> loadedParsers = new HashMap<String,String>();
-
-    /**
-     * Singleton access.
-     * @return {@link ParserStrategyConfigCollection}
-     */
-    public static ParserStrategyConfigCollection getInstance() {
-        return INSTANCE;
-    }
-
-    private ParserStrategyConfigCollection() {}
 
     /**
      * Loads the parser.xml config file.  Should be called before first use.  Can be called again

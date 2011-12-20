@@ -18,7 +18,7 @@ public class ParserStrategyFactory {
         ClassLoader classLoader = ParserStrategyFactory.class.getClassLoader();
 
         try{
-            String parserClassPath = ParserStrategyConfigCollection.getInstance().getParserClassForType(parseType);
+            String parserClassPath = ParserStrategyConfigCollection.INSTANCE.getParserClassForType(parseType);
             return (ParserStrategy)classLoader.loadClass(parserClassPath).newInstance();
         } catch (Exception e){
             //for current purposes *any* exception means the parser was not found
