@@ -11,22 +11,22 @@ import java.util.Observer;
 /**
  * @author matwood
  * @since 12/15/11
- * Simple observer class to monitor an {@link ObservableDirectory} for new files.
+ *        Simple observer class to monitor an {@link ObservableDirectory} for new files.
  */
-public class DirectoryObserver implements Observer{
+public class DirectoryObserver implements Observer {
     private final static Logger logger = Logger.getLogger(ObservableDirectory.class);
 
     @Override
     public void update(Observable o, Object arg) {
-        try{
-            ObservedFile ofile = (ObservedFile)arg;
+        try {
+            ObservedFile ofile = (ObservedFile) arg;
             logger.debug("Notification Received:" + ofile.getType());
-            
+
             ParserStrategy parserStrategy = ParserStrategyFactory.getParser(ofile.getType());
             Parser parser = new Parser(parserStrategy);
             parser.parseFile(ofile.getName());
 
-        }catch(Exception e){
+        } catch (Exception e) {
             logger.debug(e.getMessage());
         }
     }
