@@ -19,12 +19,14 @@ public class DirectoryObserver implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         try {
-            ObservedFile ofile = (ObservedFile) arg;
-            logger.debug("Notification Received:" + ofile.getType());
+            if (arg instanceof ObservedFile) {
+                ObservedFile ofile = (ObservedFile) arg;
+                logger.debug("Notification Received:" + ofile.getType());
 
-            ParserStrategy parserStrategy = ParserStrategyFactory.getParser(ofile.getType());
-            Parser parser = new Parser(parserStrategy);
-            parser.parseFile(ofile.getName());
+                ParserStrategy parserStrategy = ParserStrategyFactory.getParser(ofile.getType());
+                Parser parser = new Parser(parserStrategy);
+                parser.parseFile(ofile.getName());
+            }
 
         } catch (Exception e) {
             logger.debug(e.getMessage());
