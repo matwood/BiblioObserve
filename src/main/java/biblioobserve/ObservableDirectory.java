@@ -10,7 +10,6 @@ import java.util.Random;
 /**
  * @author matwood
  * @since 12/16/11
- *        <p/>
  *        Class that emulates a directory and alerts its observers when a file arrives.  When the class
  *        notifies the observers it sends along information required to process the file.
  */
